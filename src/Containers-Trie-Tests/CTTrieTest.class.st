@@ -414,6 +414,25 @@ CTTrieTest >> testWikipediaExampleIsCompressed [
 	self assert: trie isCompressed
 ]
 
+{ #category : #'as yet unclassified' }
+CTTrieTest >> testWikipediaExampleIsCompressed_amp_A25_A6 [
+
+	"SmallAmp has derived this test from `CTTrieTest>>#testWikipediaExampleIsCompressed` by applying some transformations and regenerating its assertions.
+	This test can cover this part:
+	*	In `CTTrie>> #removeKey:ifAbsent:` from 388 to 440:
+		Operation: ReplaceIfFalseReceiverWithTrueOperator
+		Code snippet: `currentNode isWord ifFalse: [ ^ anAbsentBlock value ]`
+		Dynamic state: nil
+		Mutant id: ReplaceIfFalseReceiverWithTrueOperator#CTTrie#removeKey:ifAbsent:#388#440
+"
+
+	<madeBySmallAmp>
+	trie
+		at: 'in' update: [  ] initial: 4;
+		isCompressed.
+	self should: [ trie removeKey: 'in' ] raise: KeyNotFound
+]
+
 { #category : #'tests - querying' }
 CTTrieTest >> testWithAllValuesBeginningWithdo [
 
