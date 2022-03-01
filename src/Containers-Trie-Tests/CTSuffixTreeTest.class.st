@@ -73,3 +73,24 @@ CTSuffixTreeTest >> testRemovingAStringRemovesAllSuffixes [
 		do: [ :e | self deny: (suffixTree contains: e) ]	
 	
 ]
+
+{ #category : #'as yet unclassified' }
+CTSuffixTreeTest >> testRemovingAStringRemovesAllSuffixes_amp_L8_A11 [
+
+	"SmallAmp has derived this test from `CTSuffixTreeTest>>#testRemovingAStringRemovesAllSuffixes` by applying some transformations and regenerating its assertions.
+	This test can cover this part:
+	*	In `CTSuffixTree>> #at:update:initial:` from 63 to 127:
+		Operation: RemoveCaretOperator
+		Code snippet: `^ trie at: aString update: updateBlock initial: initBlocktOrValue`
+		Dynamic state: {#aString->'nana'. #initBlocktOrValue->1}
+		Mutant id: RemoveCaretOperator#CTSuffixTree#at:update:initial:#63#127
+"
+
+	<madeBySmallAmp>
+	| aCTOptimizedTrie |
+	aCTOptimizedTrie := suffixTree at: 'nana' update: [  ] initial: 1.
+	self assert: aCTOptimizedTrie class equals: CTOptimizedTrie.
+	suffixTree
+		atSuffixesOf: 'banana' put: -1;
+		removeSuffixesOf: 'banana'
+]
