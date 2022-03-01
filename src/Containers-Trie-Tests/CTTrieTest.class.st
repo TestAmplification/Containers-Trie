@@ -80,6 +80,29 @@ CTTrieTest >> testAllValues [
 	self assertCollection: #(1 2 3) hasSameElements: aTrie allValues
 ]
 
+{ #category : #'as yet unclassified' }
+CTTrieTest >> testAllValues_amp_A52 [
+
+	"SmallAmp has derived this test from `CTTrieTest>>#testAllValues` by applying some transformations and regenerating its assertions.
+	This test can cover this part:
+	*	In `CTTrie>> #rootNode` from 13 to 18:
+		Operation: RemoveCaretOperator
+		Code snippet: `^ root`
+		Dynamic state: nil
+		Mutant id: RemoveCaretOperator#CTTrie#rootNode#13#18
+"
+
+	<madeBySmallAmp>
+	| aTrie aCTTrieNode |
+	aTrie := self newInstance.
+	aCTTrieNode := aTrie
+		               at: 'one' put: 1;
+		               at: 'two' put: 2;
+		               rootNode.
+	self assert: aCTTrieNode class equals: CTTrieNode.
+	aTrie at: 'three' put: 3
+]
+
 { #category : #'tests - testing' }
 CTTrieTest >> testAnEmptyTrieDoesNotContainPrefix [
 
