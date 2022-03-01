@@ -266,6 +266,30 @@ CTTrieTest >> testIsCompressed [
 	self assert: aTrie isCompressed
 ]
 
+{ #category : #'as yet unclassified' }
+CTTrieTest >> testIsCompressed_amp_A58 [
+
+	"SmallAmp has derived this test from `CTTrieTest>>#testIsCompressed` by applying some transformations and regenerating its assertions.
+	This test can cover this part:
+	*	In `CTTrie>> #rootNode` from 13 to 18:
+		Operation: RemoveCaretOperator
+		Code snippet: `^ root`
+		Dynamic state: nil
+		Mutant id: RemoveCaretOperator#CTTrie#rootNode#13#18
+"
+
+	<madeBySmallAmp>
+	| aTrie aCTTrieNode |
+	aTrie := self newInstance.
+	aCTTrieNode := aTrie
+		               at: 'one' put: 1;
+		               at: 'two' put: 1;
+		               at: 'three' put: 1;
+		               rootNode.
+	self assert: aCTTrieNode class equals: CTTrieNode.
+	aTrie at: 'four' put: 1
+]
+
 { #category : #'tests - removing' }
 CTTrieTest >> testRemoveKey [
 	| aTrie |
