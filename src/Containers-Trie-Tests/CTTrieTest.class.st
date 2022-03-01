@@ -88,6 +88,22 @@ CTTrieTest >> testAnEmptyTrieDoesNotContainPrefix [
 	
 ]
 
+{ #category : #'as yet unclassified' }
+CTTrieTest >> testAnEmptyTrieDoesNotContainPrefix_amp_L0_A6 [
+
+	"SmallAmp has derived this test from `CTTrieTest>>#testAnEmptyTrieDoesNotContainPrefix` by applying some transformations and regenerating its assertions.
+	This test can cover this part:
+	*	In `CTTrie>> #removeKey:ifAbsent:` from 388 to 440:
+		Operation: ReplaceIfFalseReceiverWithTrueOperator
+		Code snippet: `currentNode isWord ifFalse: [ ^ anAbsentBlock value ]`
+		Dynamic state: nil
+		Mutant id: ReplaceIfFalseReceiverWithTrueOperator#CTTrie#removeKey:ifAbsent:#388#440
+"
+
+	<madeBySmallAmp>
+	self should: [ trie removeKey: 't' ] raise: KeyNotFound
+]
+
 { #category : #'tests - adding' }
 CTTrieTest >> testAt [
 	| aTrie |
