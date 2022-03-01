@@ -90,6 +90,33 @@ CTTrieNodeTest >> testIsNotCompressed [
 	self deny: aTrie isCompressed
 ]
 
+{ #category : #'as yet unclassified' }
+CTTrieNodeTest >> testIsNotCompressed_amp [
+
+	"SmallAmp has derived this test from `CTTrieNodeTest>>#testIsNotCompressed` by regenerating its assertions.
+	This test can cover this part:
+	*	In `CTTrieNode>> #childrenDictionary` from 21 to 30:
+		Operation: RemoveCaretOperator
+		Code snippet: `^ children`
+		Dynamic state: nil
+		Mutant id: RemoveCaretOperator#CTTrieNode#childrenDictionary#21#30
+"
+
+	<madeBySmallAmp>
+	| aTrie aCTTrieNode |
+	aTrie := self newInstance.
+	aCTTrieNode := aTrie
+		               at: 'one' put: 1;
+		               at: 'two' put: 1;
+		               at: 'three' put: 1;
+		               at: 'four' put: 1;
+		               find: 'three'.
+	self
+		assert: aCTTrieNode childrenDictionary class
+		equals: IdentityDictionary.
+	aCTTrieNode nodeValue: nil
+]
+
 { #category : #'tests - nodes' }
 CTTrieNodeTest >> testIsRoot [
 	| aTrie aWord aLongerWord aNode |
