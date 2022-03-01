@@ -80,12 +80,51 @@ CTTrieTest >> testAllValues [
 	self assertCollection: #(1 2 3) hasSameElements: aTrie allValues
 ]
 
+{ #category : #'as yet unclassified' }
+CTTrieTest >> testAllValues_amp_A52 [
+
+	"SmallAmp has derived this test from `CTTrieTest>>#testAllValues` by applying some transformations and regenerating its assertions.
+	This test can cover this part:
+	*	In `CTTrie>> #rootNode` from 13 to 18:
+		Operation: RemoveCaretOperator
+		Code snippet: `^ root`
+		Dynamic state: nil
+		Mutant id: RemoveCaretOperator#CTTrie#rootNode#13#18
+"
+
+	<madeBySmallAmp>
+	| aTrie aCTTrieNode |
+	aTrie := self newInstance.
+	aCTTrieNode := aTrie
+		               at: 'one' put: 1;
+		               at: 'two' put: 2;
+		               rootNode.
+	self assert: aCTTrieNode class equals: CTTrieNode.
+	aTrie at: 'three' put: 3
+]
+
 { #category : #'tests - testing' }
 CTTrieTest >> testAnEmptyTrieDoesNotContainPrefix [
 
 	self deny: (self newInstance containsPrefix: 'z').
 
 	
+]
+
+{ #category : #'as yet unclassified' }
+CTTrieTest >> testAnEmptyTrieDoesNotContainPrefix_amp_L0_A6 [
+
+	"SmallAmp has derived this test from `CTTrieTest>>#testAnEmptyTrieDoesNotContainPrefix` by applying some transformations and regenerating its assertions.
+	This test can cover this part:
+	*	In `CTTrie>> #removeKey:ifAbsent:` from 388 to 440:
+		Operation: ReplaceIfFalseReceiverWithTrueOperator
+		Code snippet: `currentNode isWord ifFalse: [ ^ anAbsentBlock value ]`
+		Dynamic state: nil
+		Mutant id: ReplaceIfFalseReceiverWithTrueOperator#CTTrie#removeKey:ifAbsent:#388#440
+"
+
+	<madeBySmallAmp>
+	self should: [ trie removeKey: 't' ] raise: KeyNotFound
 ]
 
 { #category : #'tests - adding' }
@@ -250,6 +289,30 @@ CTTrieTest >> testIsCompressed [
 	self assert: aTrie isCompressed
 ]
 
+{ #category : #'as yet unclassified' }
+CTTrieTest >> testIsCompressed_amp_A58 [
+
+	"SmallAmp has derived this test from `CTTrieTest>>#testIsCompressed` by applying some transformations and regenerating its assertions.
+	This test can cover this part:
+	*	In `CTTrie>> #rootNode` from 13 to 18:
+		Operation: RemoveCaretOperator
+		Code snippet: `^ root`
+		Dynamic state: nil
+		Mutant id: RemoveCaretOperator#CTTrie#rootNode#13#18
+"
+
+	<madeBySmallAmp>
+	| aTrie aCTTrieNode |
+	aTrie := self newInstance.
+	aCTTrieNode := aTrie
+		               at: 'one' put: 1;
+		               at: 'two' put: 1;
+		               at: 'three' put: 1;
+		               rootNode.
+	self assert: aCTTrieNode class equals: CTTrieNode.
+	aTrie at: 'four' put: 1
+]
+
 { #category : #'tests - removing' }
 CTTrieTest >> testRemoveKey [
 	| aTrie |
@@ -349,6 +412,25 @@ CTTrieTest >> testRemovingWikipediaExampleKeepsCompressed [
 CTTrieTest >> testWikipediaExampleIsCompressed [
 
 	self assert: trie isCompressed
+]
+
+{ #category : #'as yet unclassified' }
+CTTrieTest >> testWikipediaExampleIsCompressed_amp_A25_A6 [
+
+	"SmallAmp has derived this test from `CTTrieTest>>#testWikipediaExampleIsCompressed` by applying some transformations and regenerating its assertions.
+	This test can cover this part:
+	*	In `CTTrie>> #removeKey:ifAbsent:` from 388 to 440:
+		Operation: ReplaceIfFalseReceiverWithTrueOperator
+		Code snippet: `currentNode isWord ifFalse: [ ^ anAbsentBlock value ]`
+		Dynamic state: nil
+		Mutant id: ReplaceIfFalseReceiverWithTrueOperator#CTTrie#removeKey:ifAbsent:#388#440
+"
+
+	<madeBySmallAmp>
+	trie
+		at: 'in' update: [  ] initial: 4;
+		isCompressed.
+	self should: [ trie removeKey: 'in' ] raise: KeyNotFound
 ]
 
 { #category : #'tests - querying' }
