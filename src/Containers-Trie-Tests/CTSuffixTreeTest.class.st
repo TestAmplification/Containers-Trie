@@ -25,6 +25,24 @@ CTSuffixTreeTest >> testAddingAStringAddsAllSubstring [
 ]
 
 { #category : #'as yet unclassified' }
+CTSuffixTreeTest >> testAddingAStringAddsAllSubstring_amp [
+
+	"SmallAmp has derived this test from `CTSuffixTreeTest>>#testAddingAStringAddsAllSubstring` by regenerating its assertions.
+	This test can cover this part:
+	*	In `CTSuffixTree>> #atSuffixesOf:put:` from 106 to 113:
+		Operation: RemoveCaretOperator
+		Code snippet: `^ aValue`
+		Dynamic state: {#aValue->1}
+		Mutant id: RemoveCaretOperator#CTSuffixTree#atSuffixesOf:put:#106#113
+"
+
+	<madeBySmallAmp>
+	| anInteger |
+	anInteger := suffixTree atSuffixesOf: 'banana' put: 1.
+	self assert: anInteger equals: 1
+]
+
+{ #category : #'as yet unclassified' }
 CTSuffixTreeTest >> testAddingAStringAddsAllSubstring_amp_A21_A6 [
 
 	"SmallAmp has derived this test from `CTSuffixTreeTest>>#testAddingAStringAddsAllSubstring` by applying some transformations and regenerating its assertions.
